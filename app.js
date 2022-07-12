@@ -48,6 +48,11 @@ passport.serializeUser(function(user, done) {
     });
 });
 
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 const app = express();
 app.set("views", __dirname);
 app.set("view engine", "ejs");
